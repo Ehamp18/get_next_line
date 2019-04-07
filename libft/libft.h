@@ -6,7 +6,7 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/22 14:55:15 by elhampto          #+#    #+#             */
-/*   Updated: 2019/03/28 12:11:33 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/04/06 03:52:37 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char				*ft_strncpy(char *dst, const char *src, size_t len);
 char				*ft_strcat(char *s1, const char *s2);
 char				*ft_strncat(char *s1, const char *s2, size_t n);
 size_t				ft_strlcat(char *dst, const char *src, size_t dstsize);
-char				*ft_strchr(const char *s, int c);
+char				*ft_strchr(const char *tr, int c);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *hay, const char *need);
 char				*ft_strnstr(const char *hay, const char *need, size_t len);

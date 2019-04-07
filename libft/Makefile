@@ -6,7 +6,7 @@
 #    By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/17 21:05:39 by elhampto          #+#    #+#              #
-#    Updated: 2019/03/29 12:47:13 by elhampto         ###   ########.fr        #
+#    Updated: 2019/04/06 03:31:06 by elhampto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,9 @@ ft_putnbr_fd.o\
 ft_lstnew.o ft_lstdelone.o ft_lstdel.o ft_lstadd.o ft_lstiter.o ft_lstmap.o\
 ft_atoc.o ft_is_space.o ft_itoa_base.o ft_wordcount.o
 
-CG = GCC
+CG = gcc
 
-FLAGS = -Wall -Werror -Wextra
+FLAGS = -Wall -Werror -Wextra -g
 
 all: $(NAME)
 

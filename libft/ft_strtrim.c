@@ -6,35 +6,11 @@
 /*   By: elhampto <elhampto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/24 17:16:36 by elhampto          #+#    #+#             */
-/*   Updated: 2019/03/29 12:58:16 by elhampto         ###   ########.fr       */
+/*   Updated: 2019/03/31 19:47:22 by elhampto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static size_t		lensi(const char *s)
-{
-	size_t			i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-static char			*ncpy(char *dst, const char *src, size_t len)
-{
-	size_t			i;
-
-	i = 0;
-	ft_memset((void*)dst, 0, len);
-	while (src[i] && i < len)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	return (dst);
-}
 
 char				*ft_strtrim(char const *s)
 {
@@ -45,7 +21,7 @@ char				*ft_strtrim(char const *s)
 	if (!s)
 		return (NULL);
 	sta = 0;
-	end = lensi(s) - 1;
+	end = ft_strlen(s) - 1;
 	while (s[sta] && (s[sta] == ' ' || s[sta] == '\t' || s[sta] == '\n'))
 		sta++;
 	while (end && (s[end] == ' ' || s[end] == '\t' || s[end] == '\n'))
@@ -54,6 +30,7 @@ char				*ft_strtrim(char const *s)
 		return (ft_strnew(0));
 	if (!(string = ft_strnew(end - sta + 1)))
 		return (NULL);
-	ncpy(string, s + sta, end - sta + 1);
+	ft_strncpy(string, s + sta, end - sta + 1);
+	string[end - sta + 1] = '\0';
 	return (string);
 }
