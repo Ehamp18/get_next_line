@@ -14,18 +14,18 @@
 
 static char			*line_print(char *str)
 {
-	int				glutton;
-	char			*prodigal;
+	int			j;
+	char			*tmp;
 
-	glutton = 0;
-	while (str && str[glutton] != '\0' && str[glutton] != '\n')
+	j = 0;
+	while (str && str[j] != '\0' && str[j] != '\n')
 	{
-		if (str[glutton] == '\n')
+		if (str[j] == '\n')
 			break ;
-		glutton++;
+		j++;
 	}
-	prodigal = ft_strsub(str, 0, glutton);
-	return (prodigal);
+	tmp = ft_strsub(str, 0, j);
+	return (tmp);
 }
 
 char				*new_str(char *str, char *sss)
@@ -50,27 +50,27 @@ char				*new_str(char *str, char *sss)
 int					get_next_line(const int fd, char **line)
 {
 	char			buffer[BUFF_SIZE + 1];
-	static char		*purga[MAX_FD];
-	char			*limbo;
-	int				lustful;
+	static char		*str[MAX_FD];
+	char			*tmp;
+	int				j;
 
-	lustful = 0;
+	j = 0;
 	ft_bzero(buffer, BUFF_SIZE);
 	if (fd < 0 || line == NULL || fd >= MAX_FD || read(fd, buffer, 0) < 0)
 		return (-1);
-	while ((lustful = read(fd, buffer, BUFF_SIZE)) > 0)
+	while ((j = read(fd, buffer, BUFF_SIZE)) > 0)
 	{
-		if (!purga[fd])
-			purga[fd] = ft_strnew(BUFF_SIZE);
-		buffer[lustful] = '\0';
-		limbo = ft_strjoin(purga[fd], buffer);
-		free(purga[fd]);
-		purga[fd] = limbo;
+		if (!str[fd])
+			str[fd] = ft_strnew(BUFF_SIZE);
+		buffer[j] = '\0';
+		tmp = ft_strjoin(str[fd], buffer);
+		free(str[fd]);
+		str[fd] = tmp;
 		ft_bzero(buffer, BUFF_SIZE);
 	}
-	if (purga[fd] && *purga[fd] == '\0')
-		return (lustful);
+	if (str[fd] && *str[fd] == '\0')
+		return (j);
 	*line = line_print(purga[fd]);
-	purga[fd] = new_str(purga[fd], limbo);
+	str[fd] = new_str(str[fd], tmp);
 	return (1);
 }
